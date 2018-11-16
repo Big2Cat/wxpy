@@ -28,7 +28,7 @@ setup(
         'future',
     ],
     dependency_links=[
-        'git+https://github.com/dongweiming/itchat.git@signals#egg=itchat-9999999',
+        'git+https://github.com/Big2Cat/ItChat.git#egg=itchat-9999999',
                      ],
     tests_require=[
         'pytest',
