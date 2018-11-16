@@ -23,7 +23,7 @@ class Registered(list):
         :param msg: 给定的消息
         :return: 匹配的回复配置
         """
-
+        rs = []
         for conf in self[::-1]:
 
             if not conf.enabled or (conf.except_self and msg.sender == self.bot.self):
@@ -35,11 +35,13 @@ class Registered(list):
                 continue
 
             if conf.chats is None:
-                return conf
+                rs.append(conf)
+                continue
 
             for chat in conf.chats:
                 if (isinstance(chat, type) and isinstance(msg.chat, chat)) or chat == msg.chat:
-                    return conf
+                    rs.append(conf)
+        return rs
 
     def get_config_by_func(self, func):
         """
